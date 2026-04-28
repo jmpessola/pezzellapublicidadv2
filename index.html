@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pezzella Publicidad</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #111111;
+    --white: #f5f3ef;
+    --pink: #c8285a;
+    --pink-light: #e63d70;
+    --pink-dark: #9e1c44;
+    --gray: #222222;
+    --gray-mid: #444444;
+    --gray-light: #888888;
+    --off: #1a1a1a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(17,17,17,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,40,90,0.2);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .nav-logo-text span:first-child {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--white);
+  }
+
+  .nav-logo-text span:last-child {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray-light);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--gray-light);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--pink); }
+
+  .nav-cta {
+    background: var(--pink);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--pink-light) !important; color: var(--white) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--off);
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .hero-ticker {
+    position: absolute;
+    bottom: 3rem;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(200,40,90,0.3);
+    border-bottom: 1px solid rgba(200,40,90,0.3);
+    padding: 10px 0;
+    background: var(--off);
+  }
+
+  .ticker-inner {
+    display: flex;
+    gap: 4rem;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .ticker-inner span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-light);
+  }
+
+  .ticker-inner span.accent { color: var(--pink); }
+
+  .hero-left {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 2rem;
+  }
+
+  .hero-badge::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--pink);
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 9vw, 130px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--pink);
+    display: block;
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--gray-light);
+    max-width: 380px;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .btn-primary {
+    background: var(--pink);
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--pink-light); transform: translateY(-2px); }
+
+  .btn-ghost {
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--pink); }
+
+  .btn-ghost::after {
+    content: '→';
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+
+  .btn-ghost:hover::after { transform: translateX(4px); }
+
+  .hero-right {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    padding-left: 3rem;
+  }
+
+  .hero-img-main {
+    width: 100%;
+    max-width: 440px;
+    height: 340px;
+    object-fit: cover;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 92% 100%, 0 100%);
+    filter: grayscale(20%) contrast(1.1);
+  }
+
+  .hero-img-small {
+    width: 60%;
+    height: 160px;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(1.1);
+    align-self: flex-start;
+    margin-top: -60px;
+    margin-left: 2rem;
+    border: 3px solid var(--pink);
+  }
+
+  .hero-stat {
+    position: absolute;
+    bottom: 6rem;
+    right: 2rem;
+    text-align: right;
+  }
+
+  .hero-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--pink);
+  }
+
+  .hero-stat-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-light);
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 7rem 3rem; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--pink);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: 0.92;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── QUIENES SOMOS ── */
+  #quienes {
+    background: var(--off);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .quienes-img-wrap {
+    position: relative;
+  }
+
+  .quienes-img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    filter: grayscale(30%) contrast(1.1);
+  }
+
+  .quienes-overlay {
+    position: absolute;
+    bottom: 0;
+    left: -2rem;
+    background: var(--pink);
+    padding: 2rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 93% 100%, 0 100%);
+  }
+
+  .quienes-overlay strong {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    display: block;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .quienes-overlay span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .quienes-text { max-width: 520px; }
+
+  .quienes-body {
+    font-size: 17px;
+    line-height: 1.9;
+    color: rgba(245,243,239,0.75);
+    margin-bottom: 2.5rem;
+  }
+
+  .quienes-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .pillar {
+    border-left: 2px solid var(--pink);
+    padding-left: 1rem;
+  }
+
+  .pillar strong {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .pillar span {
+    font-size: 13px;
+    color: var(--gray-light);
+    line-height: 1.5;
+  }
+
+  /* ── SERVICIOS ── */
+  #servicios { background: var(--black); }
+
+  .servicios-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(200,40,90,0.2);
+  }
+
+  .servicio-card {
+    background: var(--off);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .servicio-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--pink);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .servicio-card:hover { background: #222; }
+  .servicio-card:hover::after { transform: scaleX(1); }
+
+  .servicio-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: rgba(200,40,90,0.15);
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+  }
+
+  .servicio-card:hover .servicio-num { color: rgba(200,40,90,0.4); }
+
+  .servicio-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 1.5rem;
+    color: var(--pink);
+  }
+
+  .servicio-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .servicio-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--gray-light);
+  }
+
+  .servicio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 1.5rem;
+  }
+
+  .servicio-tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pink);
+    border: 1px solid rgba(200,40,90,0.4);
+    padding: 3px 10px;
+  }
+
+  /* ── PORTFOLIO ── */
+  #portfolio { background: var(--off); }
+
+  .portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+  }
+
+  .portfolio-filters {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .filter-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--gray-light);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--pink);
+    color: var(--pink);
+  }
+
+  .portfolio-masonry {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+  }
+
+  .port-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .port-item:nth-child(1) { grid-column: span 7; grid-row: span 2; height: 540px; }
+  .port-item:nth-child(2) { grid-column: span 5; height: 260px; }
+  .port-item:nth-child(3) { grid-column: span 5; height: 260px; }
+  .port-item:nth-child(4) { grid-column: span 4; height: 360px; }
+  .port-item:nth-child(5) { grid-column: span 4; height: 360px; }
+  .port-item:nth-child(6) { grid-column: span 4; height: 360px; }
+
+  .port-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(1.05);
+    transition: transform 0.6s ease, filter 0.4s ease;
+  }
+
+  .port-item:hover img {
+    transform: scale(1.06);
+    filter: grayscale(0%) contrast(1.1);
+  }
+
+  .port-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(17,17,17,0.9) 0%, transparent 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .port-item:hover .port-overlay { opacity: 1; }
+
+  .port-cat {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 4px;
+  }
+
+  .port-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--white);
+  }
+
+  /* ── CONTACTO ── */
+  #contacto {
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contacto-left {}
+
+  .contacto-info { margin-top: 3rem; }
+
+  .contacto-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contacto-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(200,40,90,0.1);
+    border: 1px solid rgba(200,40,90,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--pink);
+  }
+
+  .contacto-item-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 4px;
+  }
+
+  .contacto-item-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .contacto-form {
+    background: var(--off);
+    padding: 3rem;
+    border: 1px solid rgba(200,40,90,0.15);
+  }
+
+  .form-row { margin-bottom: 1.5rem; }
+
+  .form-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 8px;
+  }
+
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-input:focus, .form-textarea:focus, .form-select:focus {
+    border-color: var(--pink);
+  }
+
+  .form-textarea { min-height: 120px; resize: vertical; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--pink);
+    color: var(--white);
+    border: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 16px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+
+  .form-submit:hover { background: var(--pink-light); transform: translateY(-2px); }
+
+  /* ── CHATBOT ── */
+  #chatbot-trigger {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 200;
+  }
+
+  .chat-bubble-btn {
+    width: 60px;
+    height: 60px;
+    background: var(--pink);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: background 0.2s, transform 0.3s;
+    position: relative;
+  }
+
+  .chat-bubble-btn:hover { background: var(--pink-light); transform: scale(1.05); }
+
+  .chat-pulse {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 12px;
+    height: 12px;
+    background: #4ade80;
+    border-radius: 50%;
+    border: 2px solid var(--black);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.2); }
+  }
+
+  #chatbot-window {
+    position: fixed;
+    bottom: 6rem;
+    right: 2rem;
+    width: 360px;
+    background: var(--off);
+    border: 1px solid rgba(200,40,90,0.3);
+    z-index: 199;
+    display: none;
+    flex-direction: column;
+    max-height: 520px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+
+  #chatbot-window.open { display: flex; }
+
+  .chat-header {
+    background: var(--pink);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 97% 100%, 0 100%);
+  }
+
+  .chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .chat-avatar {
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    color: white;
+  }
+
+  .chat-header-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: white;
+    display: block;
+  }
+
+  .chat-header-status {
+    font-size: 11px;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .chat-close {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+
+  .chat-close:hover { opacity: 1; }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--black);
+    min-height: 280px;
+    max-height: 320px;
+  }
+
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--pink-dark); }
+
+  .msg {
+    max-width: 85%;
+    animation: msgIn 0.3s ease;
+  }
+
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .msg.bot { align-self: flex-start; }
+  .msg.user { align-self: flex-end; }
+
+  .msg-bubble {
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .msg.bot .msg-bubble {
+    background: var(--off);
+    color: rgba(245,243,239,0.9);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0 8px 8px 8px;
+  }
+
+  .msg.user .msg-bubble {
+    background: var(--pink);
+    color: white;
+    border-radius: 8px 0 8px 8px;
+  }
+
+  .msg-time {
+    font-size: 10px;
+    color: var(--gray-light);
+    margin-top: 4px;
+    padding: 0 2px;
+  }
+
+  .msg.user .msg-time { text-align: right; }
+
+  .chat-typing {
+    align-self: flex-start;
+    display: none;
+  }
+
+  .chat-typing.show { display: flex; }
+
+  .typing-dots {
+    display: flex;
+    gap: 4px;
+    padding: 12px 14px;
+    background: var(--off);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0 8px 8px 8px;
+  }
+
+  .typing-dots span {
+    width: 6px;
+    height: 6px;
+    background: var(--pink);
+    border-radius: 50%;
+    animation: dot 1.4s ease-in-out infinite;
+  }
+
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes dot {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-6px); opacity: 1; }
+  }
+
+  .chat-quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0.75rem 1.25rem;
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .quick-btn {
+    background: none;
+    border: 1px solid rgba(200,40,90,0.4);
+    color: var(--pink);
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .quick-btn:hover { background: rgba(200,40,90,0.15); }
+
+  .chat-input-area {
+    display: flex;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  #chat-input {
+    flex: 1;
+    background: var(--off);
+    border: none;
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    padding: 14px 16px;
+    outline: none;
+    resize: none;
+    height: 52px;
+  }
+
+  #chat-input::placeholder { color: var(--gray-light); }
+
+  .chat-send {
+    background: var(--pink);
+    border: none;
+    color: white;
+    padding: 0 18px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chat-send:hover { background: var(--pink-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--off);
+    border-top: 1px solid rgba(200,40,90,0.2);
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--gray-light);
+    letter-spacing: 1px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--gray-light);
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+
+  .social-link:hover { border-color: var(--pink); color: var(--pink); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 10rem; }
+    #hero::before { display: none; }
+    .hero-right { display: none; }
+    #quienes, #contacto { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    #servicios, #portfolio { padding: 4rem 1.5rem; }
+    .servicios-grid { grid-template-columns: 1fr; }
+    .portfolio-masonry { grid-template-columns: 1fr; }
+    .port-item { grid-column: auto !important; height: 240px !important; }
+    .servicios-header, .portfolio-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <svg class="nav-logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" fill="#1a1a1a"/>
+      <path d="M8 8 L20 8 Q28 8 28 16 Q28 24 20 24 L14 24 L14 30 L8 30 Z" fill="#c8285a"/>
+      <path d="M8 8 L20 8 Q26 8 26 14 Q26 20 20 20 L14 20 L14 24 L20 24 Q28 24 28 16 Q28 8 20 8 Z" fill="#4a6fa5" opacity="0.6"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span>Pezzella</span>
+      <span>Publicidad</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#quienes">Quiénes somos</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left fade-up">
+    <div class="hero-badge">Publicidad exterior · Buenos Aires</div>
+    <h1 class="hero-title">
+      Tu marca<br>en la
+      <em>calle.</em>
+    </h1>
+    <p class="hero-desc">
+      Cartelería de vía pública, adhesivos, ploteos, vidrieras y más. Hacemos que tu mensaje llegue donde tiene que estar.
+    </p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">Ver trabajos</a>
+      <a href="#contacto" class="btn-ghost">Solicitar presupuesto</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img-main"
+      src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80"
+      alt="Cartelería exterior" />
+    <img class="hero-img-small"
+      src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&q=80"
+      alt="Ploteo vehicular" />
+    <div class="hero-stat">
+      <div class="hero-stat-num">15+</div>
+      <div class="hero-stat-label">Años de experiencia</div>
+    </div>
+  </div>
+
+  <div class="hero-ticker">
+    <div class="ticker-inner">
+      <span>Cartelería vía pública</span><span class="accent">·</span>
+      <span>Adhesivos</span><span class="accent">·</span>
+      <span>Microperforados</span><span class="accent">·</span>
+      <span>Ploteos</span><span class="accent">·</span>
+      <span>Vidrieras</span><span class="accent">·</span>
+      <span>Banners</span><span class="accent">·</span>
+      <span>Stickers</span><span class="accent">·</span>
+      <span>Letras corpóreas</span><span class="accent">·</span>
+      <span>Ruteros</span><span class="accent">·</span>
+      <span>Inmobiliarias</span><span class="accent">·</span>
+      <span>Cartelería vía pública</span><span class="accent">·</span>
+      <span>Adhesivos</span><span class="accent">·</span>
+      <span>Microperforados</span><span class="accent">·</span>
+      <span>Ploteos</span><span class="accent">·</span>
+      <span>Vidrieras</span><span class="accent">·</span>
+      <span>Banners</span><span class="accent">·</span>
+      <span>Stickers</span><span class="accent">·</span>
+      <span>Letras corpóreas</span><span class="accent">·</span>
+    </div>
+  </div>
+</section>
+
+<!-- QUIENES SOMOS -->
+<section id="quienes">
+  <div class="quienes-img-wrap fade-up">
+    <img class="quienes-img"
+      src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80"
+      alt="Equipo Pezzella Publicidad" />
+    <div class="quienes-overlay">
+      <strong>15+</strong>
+      <span>Años en el mercado</span>
+    </div>
+  </div>
+  <div class="quienes-text fade-up">
+    <div class="section-label">Quiénes somos</div>
+    <h2 class="section-title">Impacto visual.<br>Resultados reales.</h2>
+    <p class="quienes-body">
+      Somos una empresa especializada en publicidad exterior con más de 15 años de experiencia en el mercado argentino. Trabajamos con particulares, inmobiliarias, comercios y empresas de todos los rubros para dar vida a sus mensajes en el espacio público.
+    </p>
+    <p class="quienes-body">
+      Nuestro equipo combina creatividad y precisión técnica para entregar productos de la más alta calidad, desde un simple sticker hasta una gran instalación de cartelería urbana.
+    </p>
+    <div class="quienes-pillars">
+      <div class="pillar">
+        <strong>Calidad garantizada</strong>
+        <span>Materiales premium y acabados de nivel profesional</span>
+      </div>
+      <div class="pillar">
+        <strong>Presupuesto sin cargo</strong>
+        <span>Te asesoramos y cotizamos sin compromiso</span>
+      </div>
+      <div class="pillar">
+        <strong>Entrega puntual</strong>
+        <span>Cumplimos los plazos acordados siempre</span>
+      </div>
+      <div class="pillar">
+        <strong>Cobertura total</strong>
+        <span>Trabajamos en todo el territorio nacional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="servicios-header">
+    <div>
+      <div class="section-label">Lo que hacemos</div>
+      <h2 class="section-title">Servicios</h2>
+    </div>
+    <p style="font-size:15px;color:var(--gray-light);max-width:280px;line-height:1.8;">
+      Soluciones completas de comunicación visual para cualquier necesidad
+    </p>
+  </div>
+  <div class="servicios-grid">
+    <div class="servicio-card fade-up">
+      <div class="servicio-num">01</div>
+      <svg class="servicio-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="4" y="10" width="36" height="24" rx="2"/>
+        <path d="M14 34 L14 38 M30 34 L30 38 M8 38 L36 38"/>
+        <path d="M12 18 L32 18 M12 24 L24 24"/>
+      </svg>
+      <div class="servicio-name">Cartelería Vía Pública</div>
+      <p class="servicio-desc">Carteles para particulares, inmobiliarias y empresas. Ruteros, banners y toda la gama de publicidad exterior de alto impacto.</p>
+      <div class="servicio-tags">
+        <span class="servicio-tag">Particulares</span>
+        <span class="servicio-tag">Inmobiliarias</span>
+        <span class="servicio-tag">Ruteros</span>
+      </div>
+    </div>
+    <div class="servicio-card fade-up">
+      <div class="servicio-num">02</div>
+      <svg class="servicio-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M8 8 L36 8 L36 36 L8 36 Z"/>
+        <path d="M14 14 L30 14 M14 20 L30 20 M14 26 L22 26"/>
+        <path d="M32 28 L40 36 M36 28 L36 32 L32 32"/>
+      </svg>
+      <div class="servicio-name">Adhesivos & Ploteos</div>
+      <p class="servicio-desc">Adhesivos de todo tipo, microperforados para vidrieras y ploteos vehiculares con vinilo de primera calidad.</p>
+      <div class="servicio-tags">
+        <span class="servicio-tag">Adhesivos</span>
+        <span class="servicio-tag">Microperforados</span>
+        <span class="servicio-tag">Ploteos</span>
+      </div>
+    </div>
+    <div class="servicio-card fade-up">
+      <div class="servicio-num">03</div>
+      <svg class="servicio-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="4" y="8" width="36" height="28" rx="2"/>
+        <path d="M4 16 L40 16"/>
+        <circle cx="10" cy="12" r="2" fill="currentColor" stroke="none"/>
+        <circle cx="17" cy="12" r="2" fill="currentColor" stroke="none"/>
+        <path d="M12 24 L32 24 M16 30 L28 30"/>
+      </svg>
+      <div class="servicio-name">Vidrieras & Banners</div>
+      <p class="servicio-desc">Decoración y publicidad en vidrieras comerciales, banners de lona, stickers y troquelados para todo tipo de superficies.</p>
+      <div class="servicio-tags">
+        <span class="servicio-tag">Vidrieras</span>
+        <span class="servicio-tag">Banners</span>
+        <span class="servicio-tag">Troquelados</span>
+      </div>
+    </div>
+    <div class="servicio-card fade-up">
+      <div class="servicio-num">04</div>
+      <svg class="servicio-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M8 32 L8 16 Q8 8 16 8 L28 8 Q36 8 36 16 L36 32"/>
+        <path d="M4 32 L40 32"/>
+        <path d="M14 20 Q14 14 22 14 Q30 14 30 20"/>
+      </svg>
+      <div class="servicio-name">Letras Corpóreas</div>
+      <p class="servicio-desc">Letras y logos en relieve para locales y fachadas. Materiales como PVC, acrílico, aluminio y acero inoxidable.</p>
+      <div class="servicio-tags">
+        <span class="servicio-tag">PVC</span>
+        <span class="servicio-tag">Acrílico</span>
+        <span class="servicio-tag">Aluminio</span>
+      </div>
+    </div>
+    <div class="servicio-card fade-up">
+      <div class="servicio-num">05</div>
+      <svg class="servicio-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M10 10 L34 10 L40 22 L34 34 L10 34 L4 22 Z"/>
+        <circle cx="22" cy="22" r="6"/>
+      </svg>
+      <div class="servicio-name">Stickers Troquelados</div>
+      <p class="servicio-desc">Stickers personalizados con cualquier forma gracias al troquelado. Ideales para promociones, productos y marquetería.</p>
+      <div class="servicio-tags">
+        <span class="servicio-tag">Personalizados</span>
+        <span class="servicio-tag">Cualquier forma</span>
+      </div>
+    </div>
+    <div class="servicio-card fade-up">
+      <div class="servicio-num">06</div>
+      <svg class="servicio-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="22" cy="22" r="16"/>
+        <path d="M22 6 L22 38 M6 22 L38 22"/>
+        <path d="M10 10 L34 34 M34 10 L10 34"/>
+      </svg>
+      <div class="servicio-name">Diseño & Asesoría</div>
+      <p class="servicio-desc">Servicio integral de diseño gráfico y asesoramiento para que tu comunicación visual sea coherente y efectiva.</p>
+      <div class="servicio-tags">
+        <span class="servicio-tag">Diseño</span>
+        <span class="servicio-tag">Asesoría</span>
+        <span class="servicio-tag">Sin cargo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <div class="section-label">Nuestros trabajos</div>
+      <h2 class="section-title">Portfolio</h2>
+    </div>
+    <div class="portfolio-filters">
+      <button class="filter-btn active">Todo</button>
+      <button class="filter-btn">Vía pública</button>
+      <button class="filter-btn">Ploteos</button>
+      <button class="filter-btn">Vidrieras</button>
+    </div>
+  </div>
+
+  <div class="portfolio-masonry">
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=900&q=80" alt="Cartelería exterior grande" />
+      <div class="port-overlay">
+        <div class="port-cat">Vía pública</div>
+        <div class="port-title">Campaña Inmobiliaria Centro</div>
+      </div>
+    </div>
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=80" alt="Ploteo vehicular" />
+      <div class="port-overlay">
+        <div class="port-cat">Ploteo vehicular</div>
+        <div class="port-title">Flota corporativa completa</div>
+      </div>
+    </div>
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Banner evento" />
+      <div class="port-overlay">
+        <div class="port-cat">Banners</div>
+        <div class="port-title">Lanzamiento de producto</div>
+      </div>
+    </div>
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Vidriera comercial" />
+      <div class="port-overlay">
+        <div class="port-cat">Vidrieras</div>
+        <div class="port-title">Decoración local moda</div>
+      </div>
+    </div>
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?w=600&q=80" alt="Letras corpóreas" />
+      <div class="port-overlay">
+        <div class="port-cat">Letras corpóreas</div>
+        <div class="port-title">Fachada restaurante</div>
+      </div>
+    </div>
+    <div class="port-item">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Stickers troquelados" />
+      <div class="port-overlay">
+        <div class="port-cat">Adhesivos</div>
+        <div class="port-title">Packaging personalizado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-left fade-up">
+    <div class="section-label">Hablemos</div>
+    <h2 class="section-title">Pedí tu<br>presupuesto</h2>
+    <p style="font-size:16px;color:var(--gray-light);line-height:1.9;margin-top:1rem;max-width:400px;">
+      Contanos tu proyecto y te respondemos a la brevedad con el mejor precio y asesoramiento personalizado.
+    </p>
+    <div class="contacto-info">
+      <div class="contacto-item">
+        <div class="contacto-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.63 2 2 0 012-2.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 6.91a16 16 0 006 6l1.08-1.08a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contacto-item-label">Teléfono / WhatsApp</div>
+          <div class="contacto-item-value">+54 9 11 5956-0072</div>
+        </div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contacto-item-label">Email</div>
+          <div class="contacto-item-value">info@pezzella.com.ar</div>
+        </div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contacto-item-label">Ubicación</div>
+          <div class="contacto-item-value">Buenos Aires, Argentina</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contacto-form fade-up">
+    <div class="form-grid">
+      <div class="form-row">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-input" placeholder="Tu nombre" />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Empresa</label>
+        <input type="text" class="form-input" placeholder="Empresa (opcional)" />
+      </div>
+    </div>
+    <div class="form-grid">
+      <div class="form-row">
+        <label class="form-label">Teléfono</label>
+        <input type="tel" class="form-input" placeholder="+54 11 ..." />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="tu@email.com" />
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Tipo de servicio</label>
+      <select class="form-select">
+        <option value="" disabled selected>Seleccioná un servicio</option>
+        <option>Cartelería vía pública</option>
+        <option>Adhesivos / Microperforados</option>
+        <option>Ploteos vehiculares</option>
+        <option>Vidrieras / Banners</option>
+        <option>Stickers troquelados</option>
+        <option>Letras corpóreas</option>
+        <option>Otro</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Contanos tu proyecto</label>
+      <textarea class="form-textarea" placeholder="Describí lo que necesitás: tamaño, cantidad, materiales, plazos..."></textarea>
+    </div>
+    <button class="form-submit" onclick="handleFormSubmit(this)">Enviar consulta</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Pezzella Publicidad · Buenos Aires, Argentina</div>
+  <div class="footer-social">
+    <a class="social-link" href="https://www.instagram.com/pezzella_publicidad" target="_blank" title="Instagram">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+    </a>
+    <a class="social-link" href="#" title="Facebook">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+      </svg>
+    </a>
+    <a class="social-link" href="https://wa.me/5491159560072" target="_blank" title="WhatsApp">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+  </div>
+</footer>
+
+<!-- CHATBOT -->
+<div id="chatbot-trigger">
+  <button class="chat-bubble-btn" onclick="toggleChat()" title="Chateá con nosotros">
+    <svg id="chat-icon-open" width="24" height="24" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+    </svg>
+    <svg id="chat-icon-close" width="24" height="24" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" style="display:none">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+    <div class="chat-pulse"></div>
+  </button>
+</div>
+
+<div id="chatbot-window">
+  <div class="chat-header">
+    <div class="chat-header-info">
+      <div class="chat-avatar">P</div>
+      <div>
+        <span class="chat-header-name">Pezzella Publicidad</span>
+        <span class="chat-header-status">● En línea · Respondemos al instante</span>
+      </div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">×</button>
+  </div>
+
+  <div class="chat-messages" id="chat-messages">
+    <div class="msg bot">
+      <div class="msg-bubble">¡Hola! 👋 Soy el asistente de <strong>Pezzella Publicidad</strong>. ¿En qué te podemos ayudar hoy? Podés preguntarme sobre precios, materiales, tiempos de entrega o cualquier servicio.</div>
+      <div class="msg-time">Ahora</div>
+    </div>
+  </div>
+
+  <div class="chat-quick">
+    <button class="quick-btn" onclick="sendQuick('¿Cuáles son sus servicios?')">Servicios</button>
+    <button class="quick-btn" onclick="sendQuick('¿Cómo pido un presupuesto?')">Presupuesto</button>
+    <button class="quick-btn" onclick="sendQuick('¿Cuánto tarda la entrega?')">Tiempos</button>
+    <button class="quick-btn" onclick="sendQuick('¿Dónde están ubicados?')">Ubicación</button>
+  </div>
+
+  <div class="chat-input-area">
+    <textarea id="chat-input" placeholder="Escribí tu consulta..." rows="1"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage()}"></textarea>
+    <button class="chat-send" onclick="sendMessage()">
+      <svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  // ── INTERSECTION OBSERVER for animations ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── PORTFOLIO FILTERS ──
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // ── FORM SUBMIT ──
+  function handleFormSubmit(btn) {
+    const orig = btn.textContent;
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = '✓ Mensaje enviado';
+      btn.style.background = '#2a9d5a';
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    }, 1500);
+  }
+
+  // ── CHATBOT ──
+  let chatOpen = false;
+  const chatHistory = [];
+
+  const SYSTEM_PROMPT = `Sos el asistente virtual de Pezzella Publicidad, una empresa argentina de publicidad y cartelería exterior con base en Buenos Aires.
+
+SOBRE LA EMPRESA:
+- Más de 15 años de experiencia
+- Servicios: cartelería vía pública (para particulares, inmobiliarias, ruteros), adhesivos, microperforados, ploteos vehiculares, vidrieras, banners, stickers troquelados y letras corpóreas
+- Trabajan en todo el territorio nacional
+- Presupuestos sin cargo
+- Alta calidad de materiales y entrega puntual
+
+CÓMO RESPONDER:
+- Siempre en español, tono amable y profesional
+- Respuestas cortas y directas (máximo 3-4 oraciones)
+- Si preguntan por precios exactos, decí que varía según el proyecto y que pueden pedir un presupuesto sin cargo por WhatsApp o el formulario del sitio
+- Para consultas de contacto: sugerir WhatsApp al 11 5956-0072 o el formulario de contacto del sitio
+- No inventes datos específicos que no tenés (como precios exactos o dirección exacta)
+- Usá emojis con moderación`;
+
+  function toggleChat() {
+    chatOpen = !chatOpen;
+    const win = document.getElementById('chatbot-window');
+    const iconOpen = document.getElementById('chat-icon-open');
+    const iconClose = document.getElementById('chat-icon-close');
+    if (chatOpen) {
+      win.classList.add('open');
+      iconOpen.style.display = 'none';
+      iconClose.style.display = 'block';
+      document.getElementById('chat-input').focus();
+    } else {
+      win.classList.remove('open');
+      iconOpen.style.display = 'block';
+      iconClose.style.display = 'none';
+    }
+  }
+
+  function sendQuick(text) {
+    document.getElementById('chat-input').value = text;
+    sendMessage();
+  }
+
+  function getTime() {
+    return new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function appendMsg(text, role) {
+    const msgs = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.className = `msg ${role}`;
+    div.innerHTML = `<div class="msg-bubble">${text}</div><div class="msg-time">${getTime()}</div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    return div;
+  }
+
+  function showTyping() {
+    const msgs = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.className = 'msg bot chat-typing show';
+    div.id = 'typing-indicator';
+    div.innerHTML = `<div class="typing-dots"><span></span><span></span><span></span></div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function hideTyping() {
+    const t = document.getElementById('typing-indicator');
+    if (t) t.remove();
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+
+    appendMsg(text, 'user');
+    chatHistory.push({ role: 'user', content: text });
+    showTyping();
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: chatHistory
+        })
+      });
+      const data = await res.json();
+      hideTyping();
+      const reply = data.content?.[0]?.text || 'Disculpá, hubo un error. Intentá de nuevo.';
+      chatHistory.push({ role: 'assistant', content: reply });
+      appendMsg(reply, 'bot');
+    } catch(e) {
+      hideTyping();
+      appendMsg('Ups, hubo un problema de conexión. Por favor contactanos por WhatsApp al 11 5956-0072 😊', 'bot');
+    }
+  }
+</script>
+</body>
+</html>
